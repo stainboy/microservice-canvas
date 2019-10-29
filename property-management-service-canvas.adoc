@@ -1,0 +1,65 @@
+= Property Management Service
+
+
+This canvas describes the `Property Management Service`.
+
+[cols="8*"]
+|===
+3+a| Name: 5+a| Property Management Service
+
+3+a| *Description:*
+5+a|
+
+The Property Management Service provides an API for creating rooms, roomTypes, properties, creating and updating price chart.
+
+8+a| *Capabilities*
+8+a|
+Property Management
+8+| *Service API*
+3+| Commands 3+| Queries 2+| Events Published
+3+a| Synchronous:
+
+* createProperty()
+* createRoomType()
+* createRoomRate()
+* setPrice()
+
+Asynchronous:
+
+* N/A
+
+ 3+a| * findProperties()
+      * findRoomTypesForProperty()
+      * findRoomRatesForProperty()
+ 
+  2+a| Property event channel:
+
+* Price Chart Updated
+
+3+| Non-functional requirements 5+a|
+
+* 99.95% availability
+
+8+| *Observability*
+8+| Key metrics
+8+a|
+
+
+4+| Health check endpoint
+4+| /actuator/health
+
+
+
+8+| *Implementation*
+8+| Domain Model
+8+a| * Property
+     * Room
+     * RoomRate
+     * RoomType
+     * PriceChart
+     * RoomRateBucket
+8+| *Dependencies*
+4+| Invokes 4+| Subscribes to
+4+a|
+N/A
+|===

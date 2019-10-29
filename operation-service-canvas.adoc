@@ -1,0 +1,84 @@
+= Operation Service
+
+
+This canvas describes the `Operation Service`.
+
+[cols="8*"]
+|===
+3+a| Name: 5+a| Operation Service
+
+3+a| *Description:*
+5+a|
+
+The Operation Service provides an API for checkin and checkout.
+
+8+a| *Capabilities*
+8+a|
+Reservation
+8+| *Service API*
+3+| Commands 3+| Queries 2+| Events Published
+3+a| Synchronous:
+
+* checkIn() 
+* checkOut()
+
+Asynchronous:
+
+* N/A
+
+ 3+a| * findReservations() 
+      * findAvailableRooms() 
+ 
+ 2+a| Operation event channel:
+
+* Check In Completed
+* Check Out Completed
+
+3+| Non-functional requirements 5+a|
+
+* 99.95% availability
+* 1000 checkin per second
+* 1000 checkout per second
+
+8+| *Observability*
+8+| Key metrics
+8+a| * check_in
+     * check_out
+
+
+4+| Health check endpoint
+4+| /actuator/health
+
+
+
+8+| *Implementation*
+8+| Domain Model
+8+a| * Reservation (Replicated)
+     * ReservationRate (Replicated)
+     * Guest (Replicated)
+     * CreditCard (Replicated)
+
+     * Property (Replicated)
+     * Room (Replicated)
+     * RoomRate (Replicated)
+     * RoomType (Replicated)
+     * PriceChart (Replicated)
+     * RoomRateBucket (Replicated)
+
+     * Bill
+8+| *Dependencies*
+4+| Invokes 4+| Subscribes to
+4+a|
+
+
+
+
+ 4+a| Property Management Service
+
+* Price Chart Updated event
+* Reservation event
+
+
+
+
+|===

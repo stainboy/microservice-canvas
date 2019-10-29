@@ -1,0 +1,78 @@
+= Reservation Service
+
+
+This canvas describes the `Reservation Service`.
+
+[cols="8*"]
+|===
+3+a| Name: 5+a| Reservation Service
+
+3+a| *Description:*
+5+a|
+
+The Reservation Service provides an API for creating reservations, and checking availability of rooms for specific dates.
+
+8+a| *Capabilities*
+8+a|
+Reservation
+8+| *Service API*
+3+| Commands 3+| Queries 2+| Events Published
+3+a| Synchronous:
+
+* createReservation()
+
+Asynchronous:
+
+* N/A
+
+ 3+a| * findAvailableProperties() 
+      * findAvailableRoomAndRates()
+
+ 
+ 2+a| Reservation event channel:
+
+* Reservation Created
+
+3+| Non-functional requirements 5+a|
+
+* 99.95% availability
+* 1000 reservations per second
+
+8+| *Observability*
+8+| Key metrics
+8+a| * create_reservation
+
+
+4+| Health check endpoint
+4+| /actuator/health
+
+
+
+8+| *Implementation*
+8+| Domain Model
+8+a| * Reservation
+     * ReservationRate
+     * Guest
+     * CreditCard
+     * Property (Replicated)
+     * Room (Replicated)
+     * RoomRate (Replicated)
+     * RoomType (Replicated)
+     * PriceChart (Replicated)
+     * RoomRateBucket (Replicated)
+
+8+| *Dependencies*
+4+| Invokes 4+| Subscribes to
+4+a|
+
+
+
+
+ 4+a| Property Management Service
+
+* Price Chart Updated event
+* CheckIn event
+* CheckOut event
+
+
+|===
